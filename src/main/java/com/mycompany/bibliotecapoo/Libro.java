@@ -33,4 +33,18 @@ public class Libro {
     public boolean isLeido() {// Tiempo constante 0(1) 
         return leido;
     }
+    public String getTitulo(){
+        
+          return titulo;
+        
+    }
+    public String getAutor(){
+        return autor;
+    }
+    public String getGenero(){
+        return genero;
+    }
+    public boolean getmarcarLeido(){
+        return leido;
+    }
 }
