@@ -8,66 +8,77 @@ public class Principal {
     // TODO: Aquí va tu código
     public static void main(String[] args) {
        
-        Biblioteca libro2 = new Biblioteca();
+        Scanner sc = new Scanner(System.in);
+        Biblioteca biblioteca = new Biblioteca();
+        
+        int opcion = 0;
+        
+      do{
         System.out.println("1) Ingresar libro");
         System.out.println("2) Mostrar todos los libros");
         System.out.println("3) Buscar libro");
         System.out.println("4) Marcar libro como leido");
         System.out.println("5) Mostrar libros no leidos");
         System.out.println("0) Finalizar proceso");
-        Scanner sc = new Scanner(System.in);
         
-        int opcion = sc.nextInt();
-        
-      do{
+        opcion = sc.nextInt();
+          
         switch(opcion){
+            
           case 1:
-        
          System.out.println("Ingrese el libro:");
-        String titulo = sc.next();
+         String titulo = sc.next();
          System.out.println("Ingrese autor:");
-        String autor = sc.next();
+         String autor = sc.next();
          System.out.println("Ingrese año de publicacion:");
-        int anoPublicacion = sc.nextInt();
+         int anoPublicacion = sc.nextInt();
          System.out.println("Ingrese genero");
-        String genero = sc.next();
-        Libro libro = new Libro(titulo, autor, anoPublicacion, genero);
-         libro2.registrarLibro(libro);
+         String genero = sc.next();
+         Libro libro = new Libro(titulo, autor, anoPublicacion, genero);
+         biblioteca.registrarLibro(libro);
              break;
+             
           case 2:
-              libro2.MostrarLibros();
+              LinkedList<Libro> libros = biblioteca.MostrarLibros();
+              for (int i = 0; i < libros.size(); i++) {
+                  Libro libroVisitado = libros.get(i);
+                  System.out.println("Libro " + i + " :"+ libroVisitado.mostrarInformacion());
+              }
              break;
+             
           case 3:
               System.out.println("Ingrese el libro a buscar: ");
               String palabrabusqueda = sc.next();
-              Libro libro3 = libro2.buscarLibro(palabrabusqueda);
-               if(libro3.getTitulo() != null){
-              System.out.println(libro2.buscarLibro(palabrabusqueda));
-               }else{
+              Libro libro3 = biblioteca.buscarLibro(palabrabusqueda);
+                 if(libro3.getTitulo() != null){
+              System.out.println(biblioteca.buscarLibro(palabrabusqueda));
+                 }else{
                    System.out.println("Libro no fue encontrado");
                }
              break;
+             
           case 4:
               System.out.println("Ingrese libro a marcar leido");
-              String libroleido = sc.next();
-              Libro lectura = libro2.buscarLibro(libroleido);
-              if(lectura!=null){
-                  System.out.println("El libro se a marcado correctamente");
-              }else{
-                  System.out.println("El no fue encontrado");
-              }
+              String palabraBusqueda = sc.next();
+              Libro lectura = biblioteca.buscarLibro(palabraBusqueda);
+              lectura.marcarLeido();
              break;
+             
           case 5:
-              String sinleer = libro2.mostrarLibrosNoLeidos();
-                  System.out.println(sinleer);
-                    
+              LinkedList <Libro> sinleer = biblioteca.mostrarLibrosNoLeidos();
+                for (int i = 0; i < sinleer.size(); i++) {
+                   Libro sinLectura = sinleer.get(i);
+                 System.out.println(" Libro " + i + " sin leer " + sinLectura.mostrarInformacion());
+              }
+                  
              break;
+             
           case 0:
               System.out.println("Finalizo el proceso");
                default:
-             break;
-    }
-      }while(opcion!=0);
-         System.exit(opcion);
+               
+         }
+      }while (opcion != 0);
+         sc.close();
   }
 }

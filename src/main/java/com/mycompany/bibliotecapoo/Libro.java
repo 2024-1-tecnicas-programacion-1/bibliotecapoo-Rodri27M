@@ -23,28 +23,23 @@ public class Libro {
     }
     public void marcarLeido(){// Tiempo constante 0(1) 
         leido=true;
-        
-    }
-     
+    } 
     public boolean esAntiguo(){// Tiempo constante 0(1)  
          return (2024-anoPublicacion >= 50);
-      }  
-
+    }  
     public boolean isLeido() {// Tiempo constante 0(1) 
         return leido;
     }
-    public String getTitulo(){
-        
-          return titulo;
-        
+    public String getTitulo(){// Tiempo constante 0(1) 
+        return titulo;
     }
-    public String getAutor(){
+    public String getAutor(){// Tiempo constante 0(1) 
         return autor;
     }
-    public String getGenero(){
+    public String getGenero(){// Tiempo constante 0(1) 
         return genero;
     }
-    public boolean getmarcarLeido(){
+    public boolean getmarcarLeido(){// Tiempo constante 0(1) 
         return leido;
     }
 }

@@ -4,27 +4,26 @@ import java.util.LinkedList;
 
 public class Biblioteca {
     // TODO: Aquí va tu código  
-    private LinkedList <Libro> Libros;
+    private LinkedList <Libro> libros;
     
     
     public Biblioteca() {
-        this.Libros = new LinkedList<>();
+        this.libros = new LinkedList<Libro>();
     }
 
    
 
     public void registrarLibro (Libro libro){
 
-        Libros.add(libro);
-      
-       
+        libros.add(libro);
+    
     }
 
 
-    public Libro buscarLibro(String palabrabusqueda){
+    public Libro buscarLibro(String palabraBusqueda){// Tiempo constante 0(1) 
 
-        for (Libro libro: Libros){
-            if (libro.getTitulo().equals(libro) || libro.getAutor().equals(libro) || libro.getAutor().equals(libro)){
+        for (Libro libro: libros){
+            if (libro.getTitulo().equals(palabraBusqueda) || libro.getAutor().equals(palabraBusqueda) || libro.getGenero().equals(palabraBusqueda)){
 
                 return libro;
 
@@ -37,24 +36,21 @@ public class Biblioteca {
 
     }
 
-    public void MostrarLibros (){
-
-        for(Libro libros:Libros) {
-            System.out.println(libros);
-        }
-
+    public LinkedList <Libro> MostrarLibros (){// Tiempo constante 0(1) 
+             
+           return libros;
 
     }
 
 
-    public String mostrarLibrosNoLeidos(){
-        String librosLeidos= "";
-        for(Libro leido: Libros){
-          if(leido.getmarcarLeido()==false){
-              librosLeidos += leido;
+    public LinkedList <Libro> mostrarLibrosNoLeidos(){// Tiempo constante 0(1) 
+        LinkedList <Libro> noLeidos = new LinkedList<>();
+        for(Libro libro: libros){
+          if(libro.getmarcarLeido()==false){
+                noLeidos.add(libro); 
           }
         }
-        return librosLeidos;
+        return noLeidos;
     }
 }
        
